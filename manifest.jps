@@ -25,7 +25,7 @@ onInstall:
   deploy:
     name: VoyantServer 2.4 M45
     context: ROOT
-    archive: https://timowens.io/Archive.zip
+    archive: https://cloud-jps-archives.s3.amazonaws.com/VoyantServer2_4-M45.zip
 
 ssl: true
 skipNodeEmails: true
