@@ -15,11 +15,12 @@ categories:
 engine: java7
 
 nodes:
-  nodeType: tomcat9
+  nodeType: tomcat
   nodeGroup: cp
   cloudlets: 8
   extip: false
   displayName: Voyant Server
+  tag: 9.0.37-zulujdk-14.0.2
 
 onInstall:
   deploy:
