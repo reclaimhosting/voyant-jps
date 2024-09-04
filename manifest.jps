@@ -20,13 +20,13 @@ nodes:
   cloudlets: 8
   extip: false
   displayName: Voyant Server
-  tag: 9.0.37-zulujdk-14.0.2
+  tag: 10.1.28-zulujdk-11.0.24-almalinux-9
 
 onInstall:
   deploy:
     name: VoyantServer 2.4 M45
     context: ROOT
-    archive: https://cloud-jps-archives.s3.amazonaws.com/VoyantServer2_4-M45.zip
+    archive: https://cloud-jps-archives.s3.amazonaws.com/voyant_2_6_15.zip
 
 ssl: true
 skipNodeEmails: true
