@@ -12,22 +12,36 @@ categories:
 - apps/popular
 - apps/education
 
-engine: java7
-
 nodes:
   nodeType: tomcat
   nodeGroup: cp
-  cloudlets: 8
+  cloudlets: 16
   extip: false
   displayName: Voyant Server
   tag: 9.0.37-zulujdk-14.0.2
-
+  
 onInstall:
-  deploy:
-    name: VoyantServer 2.6.15
-    context: ROOT
-    archive: https://cloud-jps-archives.s3.amazonaws.com/voyant_2_6_15.zip
+  - deployArchive
 
+actions:
+  deployArchive:
+    cmd[cp]: |-
+      function get_latest_release {
+        curl --silent "https://api.github.com/repos/voyanttools/VoyantServer/releases/latest" |
+        grep '"tag_name":' |
+        sed -E 's/.*"([^"]+)".*/\1/' |
+        sed 's/v//'
+      }
+      LATEST=`get_latest_release`
+      LATEST_UNDERSCORE=`echo $LATEST | sed 's/\./_/g'`
+      cd /opt/tomcat/webapps/ROOT
+      rm -rf /opt/tomcat/webapps/ROOT/*
+      wget https://github.com/voyanttools/VoyantServer/releases/download/$LATEST/VoyantServer$LATEST_UNDERSCORE.zip
+      unzip VoyantServer$LATEST_UNDERSCORE.zip
+      mv VoyantServer$LATEST_UNDERSCORE/_app/* .
+      rm VoyantServer$LATEST_UNDERSCORE.zip
+      rm -r VoyantServer$LATEST_UNDERSCORE/
+      
 ssl: true
 skipNodeEmails: true
     
