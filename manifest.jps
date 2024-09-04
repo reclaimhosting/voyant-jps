@@ -24,7 +24,7 @@ nodes:
 
 onInstall:
   deploy:
-    name: VoyantServer 2.4 M45
+    name: VoyantServer 2.6.15
     context: ROOT
     archive: https://cloud-jps-archives.s3.amazonaws.com/voyant_2_6_15.zip
 
