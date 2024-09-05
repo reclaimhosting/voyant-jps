@@ -18,7 +18,7 @@ nodes:
   cloudlets: 16
   extip: false
   displayName: Voyant Server
-  tag: 9.0.37-zulujdk-14.0.2
+  tag: 9.0.93-zulujdk-17.0.12-almalinux-9
   
 onInstall:
   - deployArchive
